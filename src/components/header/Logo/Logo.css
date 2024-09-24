@@ -1,0 +1,12 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 36px;
+  font-weight: 600;
+  font-family: "Righteous";
+}
+
+.logo > img {
+  padding-top: 8px;
+}
