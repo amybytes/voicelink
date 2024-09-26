@@ -1,1 +1,1 @@
-# Voice Link
+# Voice<img src="src/assets/images/logo_cropped.png" width="38px"/>Link
