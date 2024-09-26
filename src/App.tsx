@@ -1,8 +1,13 @@
 import './App.css'
-import Header from 'components/header/Header/Header';
+import Sidebar from 'src/components/sidebar/Sidebar/Sidebar';
+import { HelmetProvider } from 'react-helmet-async';
+import { Outlet } from 'react-router-dom';
 
 export default function App() {
   return (
-    <Header />
+    <HelmetProvider>
+      <Sidebar />
+      <Outlet />
+    </HelmetProvider>
   );
 };

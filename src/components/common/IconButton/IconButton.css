@@ -1,3 +1,11 @@
 .icon-button {
   cursor: pointer;
 }
+
+.icon-button.animate {
+  transition: transform 0.2s;
+}
+
+.icon-button.animate:hover {
+  transform: scale(1.1);
+}

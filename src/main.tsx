@@ -3,7 +3,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from 'src/App.tsx'
-import Home from 'routes/Home/Home';
+import PitchMonitor from 'routes/PitchMonitor/PitchMonitor';
+import Recordings from 'routes/Recordings/Recordings';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <PitchMonitor />
+      },
+      {
+        path: "pitch",
+        element: <PitchMonitor />
+      },
+      {
+        path: "recordings",
+        element: <Recordings />
       }
     ]
   },

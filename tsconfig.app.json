@@ -31,6 +31,7 @@
       "api/*": ["./src/api"],
       "assets/*": ["./src/assets/*"],
       "images/*": ["./src/assets/images/*"],
+      "icons/*": ["./src/assets/icons/*"],
       "styles/*": ["./src/assets/styles/*"],
       "constants/*": ["./src/assets/constants/*"],
     },
