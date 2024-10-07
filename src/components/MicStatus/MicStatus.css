@@ -1,0 +1,42 @@
+.mic-status {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: fit-content;
+  place-items: center;
+  background-color: #2d2d2d;
+  border-radius: 20px;
+  padding: 10px;
+  color: #e8eaed;
+  transition: width 0.5s ease;
+  cursor: pointer;
+}
+
+.mic-status > svg.recording {
+  color: rgb(255, 113, 113);
+}
+
+.mic-status .details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 6px;
+  justify-content: center;
+  height: 100%;
+  line-height: 1.2;
+}
+
+.mic-status .status {
+  font-weight: 600;
+}
+
+.mic-status .time {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .mic-status {
+    bottom: 10px;
+    right: 10px;
+  }
+}
