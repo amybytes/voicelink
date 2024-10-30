@@ -1,18 +1,18 @@
 import './App.css'
 import MicStatus from 'components/MicStatus/MicStatus';
 import Sidebar from 'components/sidebar/Sidebar/Sidebar';
-import MicStatusContextProvider from 'contexts/MicStatusContext';
+import MicContextProvider from 'contexts/MicContext';
 import { HelmetProvider } from 'react-helmet-async';
 import { Outlet } from 'react-router-dom';
 
 export default function App() {
   return (
     <HelmetProvider>
-      <MicStatusContextProvider>
+      <MicContextProvider>
         <MicStatus />
         <Sidebar />
         <Outlet />
-      </MicStatusContextProvider>
+      </MicContextProvider>
     </HelmetProvider>
   );
 };
