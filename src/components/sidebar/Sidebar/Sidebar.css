@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -15,6 +16,10 @@
 
 .sidebar.open {
   transform: none;
+}
+
+.sidebar > .sidebar-settings {
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {

@@ -10,9 +10,9 @@ export default function Collapse({show, children}: CollapseProps) {
   const [init, setInit] = useState<boolean>(false);
   
   const container = useRef<HTMLDivElement | null>(null);
-  const maxWidth = container.current?.scrollWidth ?? 0;
-  const maxHeight = container.current?.scrollHeight ?? 0;
-  console.log("WIDTH", maxWidth);
+  const maxWidth = (container.current?.scrollWidth ?? 0) + 12;
+  const maxHeight = (container.current?.scrollHeight ?? 0) + 12;
+
 
   return (
     <div

@@ -1,8 +1,0 @@
-.sidebar-content {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 20px;
-  background-color: #272727;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}

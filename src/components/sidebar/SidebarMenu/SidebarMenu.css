@@ -1,4 +1,16 @@
 .sidebar-menu {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  /* margin-top: 10px; */
+}
+
+.sidebar-menu > h2 {
+  margin: 0;
+}
+
+.sidebar-menu > .menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
