@@ -1,13 +1,17 @@
 import "./PitchMonitor.css";
-import Graph, {GraphRange} from "src/components/common/graph/Graph/Graph";
+import {useCallback} from 'react';
+import LineGraph, {LineGraphRange} from "src/components/common/graph/LineGraph/LineGraph";
 import Page from "components/common/Page/Page";
+import {useMicContext} from 'contexts/MicContext';
+import {useSettingsContext} from "contexts/SettingsContext";
+import {PitchDetector} from "pitchy";
 
 const MIN_FREQ = 50;
 const MAX_FREQ = 450;
 const STEP_FREQ = 50;
 
 // TODO: add custom (user-defined) ranges
-const GENDER_RANGES: Array<GraphRange> = [
+const GENDER_RANGES: Array<LineGraphRange> = [
   {
     label: "Male",
     color: "#5bcffa",
@@ -29,14 +33,36 @@ const GENDER_RANGES: Array<GraphRange> = [
 ];
 
 export default function PitchMonitor() {
+  const {audioComponents} = useMicContext();
+  const {minPitchVolume, horizontalStep} = useSettingsContext();
+
+  const handleUpdateData = useCallback(() => {
+    if (audioComponents) {
+      const analyzer = audioComponents.analyzer;
+      const data = audioComponents.data;
+      const context = audioComponents.context;
+      
+      analyzer.getFloatTimeDomainData(data);
+      const detector = PitchDetector.forFloat32Array(data.length);
+      detector.minVolumeAbsolute = minPitchVolume;
+      const pitch = detector.findPitch(data, context.sampleRate)[0];
+
+      if (pitch >= MIN_FREQ && pitch <= MAX_FREQ) {
+        return pitch;
+      }
+    }
+    return -1;
+  }, [audioComponents, minPitchVolume]);
+
   return (
     <Page name="pitch-monitor" displayName="" description="">
-      <Graph
+      <LineGraph
         min={MIN_FREQ}
         max={MAX_FREQ}
         verticalStep={STEP_FREQ}
-        horizontalStep={100}
+        horizontalStep={horizontalStep}
         ranges={GENDER_RANGES}
+        updateData={handleUpdateData}
       />
 
       {/* play/pause/record audio controls can be in their own hover panel (or fixed)

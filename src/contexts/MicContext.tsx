@@ -3,9 +3,17 @@ import {useState, useContext, createContext} from 'react';
 const DEFAULT_LISTENING_STATE = false;
 const DEFAULT_RECORDING_STATE = false;
 
+interface AudioComponents {
+  stream: MediaStream,
+  context: AudioContext,
+  source: MediaStreamAudioSourceNode,
+  analyzer: AnalyserNode,
+  data: Float32Array,
+};
+
 interface MicContextType {
-  stream: MediaStream | null,
-  setStream: React.Dispatch<MediaStream | null>,
+  audioComponents: AudioComponents | null,
+  setAudioComponents: React.Dispatch<AudioComponents | null>,
   isListening: boolean,
   setIsListening: React.Dispatch<boolean>,
   isRecording: boolean,
@@ -17,8 +25,8 @@ interface MicContextProviderProps {
 };
 
 const MicContext = createContext<MicContextType>({
-  stream: null,
-  setStream: () => {},
+  audioComponents: null,
+  setAudioComponents: () => {},
   isListening: DEFAULT_LISTENING_STATE,
   setIsListening: () => {},
   isRecording: DEFAULT_RECORDING_STATE,
@@ -30,15 +38,15 @@ export function useMicContext() {
 }
 
 export default function MicContextProvider({children}: MicContextProviderProps) {
-  const [stream, setStream] = useState<MediaStream | null>(null);
+  const [audioComponents, setAudioComponents] = useState<AudioComponents | null>(null);
   const [isListening, setIsListening] = useState<boolean>(DEFAULT_LISTENING_STATE);
   const [isRecording, setIsRecording] = useState<boolean>(DEFAULT_RECORDING_STATE);
 
   return (
     <MicContext.Provider
       value={{
-        stream,
-        setStream,
+        audioComponents,
+        setAudioComponents,
         isListening,
         setIsListening,
         isRecording,
