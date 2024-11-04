@@ -14,13 +14,22 @@ export interface LineGraphProps {
   min: number,
   verticalStep: number,
   horizontalStep: number,
+  verticalUnits?: string,
   ranges: Array<LineGraphRange>,
   updateData: Function,
 };
 
 const BACKGROUND_COLOR = "#393939";
 
-export default function LineGraph({min, max, verticalStep, horizontalStep, ranges, updateData}: LineGraphProps) {
+export default function LineGraph({
+    min,
+    max,
+    verticalStep,
+    horizontalStep,
+    verticalUnits = "",
+    ranges,
+    updateData,
+  }: LineGraphProps) {
   const [init, setInit] = useState(false);
   
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -69,6 +78,7 @@ export default function LineGraph({min, max, verticalStep, horizontalStep, range
 
     ctx.font = "14px system-ui";
     ctx.textBaseline = "bottom";
+    
     for (let range of ranges) {
       ctx.fillStyle = range.color;
       const startY = graphToScreenY(range.start);
@@ -79,7 +89,6 @@ export default function LineGraph({min, max, verticalStep, horizontalStep, range
         ctx.fillText(range.label, 0, startY);
       }
     }
-
   }, [ctx, ranges, graphWidth]);
 
   const renderGridLines = useCallback(() => {
@@ -89,14 +98,24 @@ export default function LineGraph({min, max, verticalStep, horizontalStep, range
     
     ctx.strokeStyle = "#000";
     ctx.lineWidth = 1;
+
+    ctx.font = "14px system-ui";
+    ctx.textBaseline = "bottom";
+
+    let graphY = min;
     for (let i = 1; i < numRows + 1; i++) {
       const rowY = graphToScreenY(i*verticalStep);
       ctx.beginPath();
       ctx.moveTo(0, rowY);
       ctx.lineTo(graphWidth, rowY);
       ctx.stroke();
+
+      const yLabel = graphY + " " + verticalUnits;
+      const textWidth = ctx.measureText(yLabel).width;
+      ctx.fillText(yLabel, graphWidth - textWidth - 10, rowY);
+      graphY += verticalStep;
     }
-  }, [ctx, numRows, graphWidth, verticalStep]);
+  }, [ctx, numRows, graphWidth, verticalStep, min]);
 
   const renderData = useCallback(() => {
     if (!ctx) {

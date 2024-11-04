@@ -61,6 +61,7 @@ export default function PitchMonitor() {
         max={MAX_FREQ}
         verticalStep={STEP_FREQ}
         horizontalStep={horizontalStep}
+        verticalUnits="Hz"
         ranges={GENDER_RANGES}
         updateData={handleUpdateData}
       />
