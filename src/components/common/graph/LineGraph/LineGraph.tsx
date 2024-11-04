@@ -46,7 +46,7 @@ export default function LineGraph({min, max, verticalStep, horizontalStep, range
         frame.current = null;
       }
     };
-  }, [init, ctx, graphDimensions, updateData]);
+  }, [init, ctx, graphDimensions, updateData, horizontalStep]);
 
   // Converts a Y value from graph space to screen space
   const graphToScreenY = useCallback((graphY: number) => {
@@ -67,14 +67,18 @@ export default function LineGraph({min, max, verticalStep, horizontalStep, range
       return;
     }
 
+    ctx.font = "14px system-ui";
+    ctx.textBaseline = "bottom";
     for (let range of ranges) {
       ctx.fillStyle = range.color;
       const startY = graphToScreenY(range.start);
       const endY = graphToScreenY(range.end);
       ctx.fillRect(0, startY, graphWidth, endY - startY);
+      if (range.label) {
+        ctx.fillStyle = "#000";
+        ctx.fillText(range.label, 0, startY);
+      }
     }
-
-    // TODO: draw range labels
 
   }, [ctx, ranges, graphWidth]);
 

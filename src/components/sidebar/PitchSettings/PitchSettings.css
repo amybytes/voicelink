@@ -1,0 +1,9 @@
+.pitch-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pitch-settings input[type=range] {
+  width: 100%;
+}

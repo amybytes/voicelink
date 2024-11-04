@@ -7,7 +7,7 @@ import {useSettingsContext} from "contexts/SettingsContext";
 import {PitchDetector} from "pitchy";
 
 const MIN_FREQ = 50;
-const MAX_FREQ = 450;
+const MAX_FREQ = 350;
 const STEP_FREQ = 50;
 
 // TODO: add custom (user-defined) ranges

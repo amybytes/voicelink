@@ -1,5 +1,7 @@
 .sidebar-settings {
-
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .sidebar-settings > h2 {

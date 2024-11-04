@@ -1,7 +1,6 @@
 import { useMicContext } from "contexts/MicContext"
 
-const DEFAULT_FFT_SIZE = 32768;
-// const DEFAULT_FFT_SIZE = 1024;
+const DEFAULT_FFT_SIZE = 2048;
 
 export default function useMic() {
   const {setAudioComponents} = useMicContext();

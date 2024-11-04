@@ -1,0 +1,13 @@
+.setting {
+  padding: 10px;
+  padding-top: 12px;
+  padding-right: 12px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+}
+
+.setting .header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2px;
+}
