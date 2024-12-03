@@ -1,0 +1,24 @@
+.seekbar {
+  -webkit-appearance: none;
+  height: 8px;
+  background-color: #000000;
+  border-radius: 8px;
+}
+
+.seekbar::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4px;
+  height: 16px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.seekbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4px;
+  height: 16px;
+  background: #fff;
+  border-radius: 4px;
+}

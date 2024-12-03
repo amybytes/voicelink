@@ -5,14 +5,30 @@ import clsx from 'clsx';
 interface IconButtonProps {
   Icon: React.FunctionComponent,
   IconProps?: object,
+  showBackgroundOnHover?: boolean,
   animate?: boolean,
   className?: string,
   onClick: MouseEventHandler,
 }
 
-export default function IconButton({Icon, IconProps, animate, className, onClick}: IconButtonProps) {
+export default function IconButton({
+  Icon,
+  IconProps,
+  showBackgroundOnHover,
+  animate,
+  className,
+  onClick
+}: IconButtonProps) {
+  const classes = ["icon-button", className];
+  if (animate) {
+    classes.push("animate");
+  }
+  if (showBackgroundOnHover) {
+    classes.push("hover-background")
+  }
+
   return (
-    <div className={clsx("icon-button", animate ? 'animate' : '', className)} onClick={onClick}>
+    <div className={clsx(classes)} onClick={onClick}>
       <Icon {...IconProps} />
     </div>
   );

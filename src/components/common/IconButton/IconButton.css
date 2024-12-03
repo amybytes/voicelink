@@ -9,3 +9,12 @@
 .icon-button.animate:hover {
   transform: scale(1.1);
 }
+
+.icon-button.hover-background {
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.icon-button.hover-background:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

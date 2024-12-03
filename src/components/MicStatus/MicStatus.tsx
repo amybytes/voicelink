@@ -1,6 +1,7 @@
 import "./MicStatus.css";
 import {useState, useEffect} from 'react';
-import Collapse from "../common/Collapse/Collapse";
+import Collapse from "components/common/Collapse/Collapse";
+import TimeText from "components/common/TimeText/TimeText";
 import MicIcon from 'icons/mic.svg?react';
 import {useMicContext} from 'src/contexts/MicContext';
 import useMic from 'hooks/useMic';
@@ -30,23 +31,6 @@ export default function MicStatus() {
     }
   }, [isListening, isRecording]);
 
-  function formatTime(timeInSeconds: number) {
-    const hours = Math.floor(timeInSeconds / 3600)
-    timeInSeconds -= hours * 3600;
-    const mins = Math.floor(timeInSeconds / 60)
-    timeInSeconds -= mins * 60;
-    const secs = timeInSeconds;
-
-    let output = "";
-    if (hours !== 0) {
-      output += `${hours}:`.padStart(3, "0");
-    }
-    output += `${mins}:`.padStart(3, "0");
-    output += `${secs}`.padStart(2, "0");
-
-    return output;
-  }
-
   async function handleClick() {
     if (!isListening && !isRecording) {
       await setupMic()
@@ -75,7 +59,9 @@ export default function MicStatus() {
         <div className="details">
           <div className="status">{status}</div>
           {!isRecording && <div className="record-msg">Click to record</div>}
-          <div className="time" hidden={!isRecording}>{formatTime(time)}</div>
+          <div className="time" hidden={!isRecording}>
+            <TimeText value={time} />
+          </div>
         </div>
       </Collapse>
     </div>
