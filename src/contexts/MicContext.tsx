@@ -8,6 +8,7 @@ interface AudioComponents {
   context: AudioContext,
   source: MediaStreamAudioSourceNode,
   analyzer: AnalyserNode,
+  recorder: AudioWorkletNode,
   data: Float32Array,
 };
 

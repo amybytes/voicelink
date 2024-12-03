@@ -34,6 +34,11 @@
   font-size: 14px;
 }
 
+.mic-status .record-msg {
+  white-space: nowrap;
+  font-size: 13px;
+}
+
 @media (max-width: 768px) {
   .mic-status {
     bottom: 10px;

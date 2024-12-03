@@ -17,7 +17,7 @@ export default function MicStatus() {
 
   const {isListening, setIsListening, isRecording, setIsRecording} = useMicContext();
   const {time, startTimer, stopTimer} = useTimer();
-  const requestMicStream = useMic();
+  const {setupMic, startMicRecording, stopMicRecording} = useMic();
   
   const isActive = isListening || isRecording;
 
@@ -49,7 +49,7 @@ export default function MicStatus() {
 
   async function handleClick() {
     if (!isListening && !isRecording) {
-      await requestMicStream()
+      await setupMic()
         .then(() => {
           setIsListening(true);
         });
@@ -57,10 +57,14 @@ export default function MicStatus() {
     else if (isRecording) {
       setIsRecording(false);
       stopTimer();
+      const recordingData = await stopMicRecording();
+      console.log("final output", recordingData);
+      // TODO: add to the queue to be uploaded to the server (after user confirmation)
     }
     else {
       setIsRecording(true);
       startTimer();
+      startMicRecording();
     }
   }
 
@@ -70,7 +74,7 @@ export default function MicStatus() {
       <Collapse show={isActive}>
         <div className="details">
           <div className="status">{status}</div>
-          {/* {!isRecording && <div style={{whiteSpace: "nowrap", fontSize: 12}}>Click to record</div>} */}
+          {!isRecording && <div className="record-msg">Click to record</div>}
           <div className="time" hidden={!isRecording}>{formatTime(time)}</div>
         </div>
       </Collapse>
