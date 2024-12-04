@@ -8,7 +8,7 @@ export default function useTimer() {
   function startTimer() {
     setTime(0);
     isActive.current = true;
-    timerId.current = setInterval(() => {
+    timerId.current = window.setInterval(() => {
       if (isActive.current) {
         setTime((currTime) => currTime + 1);
       } else if (timerId.current) {
