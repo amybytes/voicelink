@@ -1,14 +1,14 @@
-import "./IconButton.css";
+import './IconButton.css';
 import React, {MouseEventHandler} from 'react';
 import clsx from 'clsx';
 
 interface IconButtonProps {
-  Icon: React.FunctionComponent,
-  IconProps?: object,
-  showBackgroundOnHover?: boolean,
-  animate?: boolean,
-  className?: string,
-  onClick: MouseEventHandler,
+  Icon: React.FunctionComponent;
+  IconProps?: object;
+  showBackgroundOnHover?: boolean;
+  animate?: boolean;
+  className?: string;
+  onClick: MouseEventHandler;
 }
 
 export default function IconButton({
@@ -17,14 +17,14 @@ export default function IconButton({
   showBackgroundOnHover,
   animate,
   className,
-  onClick
+  onClick,
 }: IconButtonProps) {
-  const classes = ["icon-button", className];
+  const classes = ['icon-button', className];
   if (animate) {
-    classes.push("animate");
+    classes.push('animate');
   }
   if (showBackgroundOnHover) {
-    classes.push("hover-background")
+    classes.push('hover-background');
   }
 
   return (

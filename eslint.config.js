@@ -14,6 +14,7 @@ export default tseslint.config(
       prettierRecommended,
     ],
     files: ['**/*.{ts,tsx}'],
+    ignores: ["**/*.d.ts"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

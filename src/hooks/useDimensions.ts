@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
 
 interface Dimensions {
-  width: number,
-  height: number,
-};
+  width: number;
+  height: number;
+}
 
 export default function useDimensions(element: HTMLElement) {
   const [dimensions, setDimensions] = useState<Dimensions | null>(null);

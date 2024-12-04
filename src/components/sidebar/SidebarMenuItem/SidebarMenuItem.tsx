@@ -1,12 +1,12 @@
-import "./SidebarMenuItem.css";
-import { Link } from "react-router-dom";
+import './SidebarMenuItem.css';
+import {Link} from 'react-router-dom';
 
 interface SidebarMenuItemProps {
-  text: string,
-  route: string,
-  Icon: React.FunctionComponent,
-  onClick?: Function,
-};
+  text: string;
+  route: string;
+  Icon: React.FunctionComponent;
+  onClick?: () => void;
+}
 
 export default function SidebarMenuItem({text, route, Icon, onClick}: SidebarMenuItemProps) {
   function handleClick() {
@@ -14,7 +14,7 @@ export default function SidebarMenuItem({text, route, Icon, onClick}: SidebarMen
       onClick();
     }
   }
-  
+
   return (
     <Link className="sidebar-menu-item" to={route} onClick={handleClick}>
       <Icon />

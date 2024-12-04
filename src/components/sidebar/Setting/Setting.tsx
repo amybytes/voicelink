@@ -1,10 +1,10 @@
-import "./Setting.css";
+import './Setting.css';
 
 interface SettingProps {
-  label: string,
-  value: number | string,
-  Input: React.ReactNode,
-};
+  label: string;
+  value: number | string;
+  Input: React.ReactNode;
+}
 
 export default function Setting({label, value, Input}: SettingProps) {
   return (
@@ -15,5 +15,5 @@ export default function Setting({label, value, Input}: SettingProps) {
       </div>
       {Input}
     </div>
-  )
+  );
 }

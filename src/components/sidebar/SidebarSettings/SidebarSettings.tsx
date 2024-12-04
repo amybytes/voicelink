@@ -1,5 +1,5 @@
-import {PAGE_PATHS, PAGES} from 'src/assets/constants/app';
 import './SidebarSettings.css';
+import {PAGE_PATHS, PAGES} from 'src/assets/constants/app';
 import {useLocation} from 'react-router-dom';
 
 export default function SidebarSettings() {

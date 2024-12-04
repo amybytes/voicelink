@@ -11,8 +11,7 @@ export default function useTimer() {
     timerId.current = setInterval(() => {
       if (isActive.current) {
         setTime((currTime) => currTime + 1);
-      }
-      else if (timerId.current) {
+      } else if (timerId.current) {
         clearInterval(timerId.current);
         timerId.current = null;
       }

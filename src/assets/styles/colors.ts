@@ -1,3 +1,3 @@
-export const PRIMARY_TEXT_COLOR = "#e8eaed";
+export const PRIMARY_TEXT_COLOR = '#e8eaed';
 
-export const BG_COLOR = "#393939";
+export const BG_COLOR = '#393939';

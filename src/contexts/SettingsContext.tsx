@@ -2,15 +2,15 @@ import {useState, useContext, createContext} from 'react';
 import {DEFAULT_HORIZONTAL_STEP, DEFAULT_MIN_PITCH_VOLUME} from 'constants/settings';
 
 interface SettingsContextType {
-  minPitchVolume: number,
-  setMinPitchVolume: React.Dispatch<number>,
-  horizontalStep: number,
-  setHorizontalStep: React.Dispatch<number>,
-};
+  minPitchVolume: number;
+  setMinPitchVolume: React.Dispatch<number>;
+  horizontalStep: number;
+  setHorizontalStep: React.Dispatch<number>;
+}
 
 interface SettingsContextProviderProps {
-  children: React.ReactNode,
-};
+  children: React.ReactNode;
+}
 
 const SettingsContext = createContext<SettingsContextType>({
   minPitchVolume: DEFAULT_MIN_PITCH_VOLUME,
@@ -19,6 +19,7 @@ const SettingsContext = createContext<SettingsContextType>({
   setHorizontalStep: () => {},
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useSettingsContext() {
   return useContext(SettingsContext);
 }

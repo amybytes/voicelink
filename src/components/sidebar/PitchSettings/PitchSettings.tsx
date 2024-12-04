@@ -1,18 +1,34 @@
-import "./PitchSettings.css";
-import Slider from "components/common/Slider/Slider";
-import {useSettingsContext} from "contexts/SettingsContext";
-import {MIN_VOLUME, MAX_VOLUME, STEP_VOLUME, MIN_HORIZONTAL_STEP, MAX_HORIZONTAL_STEP} from "constants/settings";
-import Setting from "../Setting/Setting";
+import './PitchSettings.css';
+import Slider from 'components/common/Slider/Slider';
+import {useSettingsContext} from 'contexts/SettingsContext';
+import {
+  MIN_VOLUME,
+  MAX_VOLUME,
+  STEP_VOLUME,
+  MIN_HORIZONTAL_STEP,
+  MAX_HORIZONTAL_STEP,
+} from 'constants/settings';
+import Setting from '../Setting/Setting';
 
 export default function PitchSettings() {
-  const {minPitchVolume, horizontalStep, setMinPitchVolume, setHorizontalStep} = useSettingsContext();
+  const {minPitchVolume, horizontalStep, setMinPitchVolume, setHorizontalStep} =
+    useSettingsContext();
 
-  const minPitchVolumePercent = getRangePercentage(minPitchVolume*25, MIN_VOLUME, MAX_VOLUME*25, 25);
-  const horizontalStepPercent = getRangePercentage(horizontalStep, MIN_HORIZONTAL_STEP, MAX_HORIZONTAL_STEP);
+  const minPitchVolumePercent = getRangePercentage(
+    minPitchVolume * 25,
+    MIN_VOLUME,
+    MAX_VOLUME * 25,
+    25,
+  );
+  const horizontalStepPercent = getRangePercentage(
+    horizontalStep,
+    MIN_HORIZONTAL_STEP,
+    MAX_HORIZONTAL_STEP,
+  );
 
   function getRangePercentage(value: number, min: number, max: number, maxPercent: number = 100) {
     const n = (value - min) / (max - min);
-    return Math.floor(n * maxPercent) + "%";
+    return Math.floor(n * maxPercent) + '%';
   }
 
   return (
@@ -43,5 +59,5 @@ export default function PitchSettings() {
         }
       />
     </div>
-  )
+  );
 }

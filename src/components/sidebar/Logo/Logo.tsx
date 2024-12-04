@@ -1,7 +1,7 @@
-import "./Logo.css";
+import './Logo.css';
 import LogoIcon from 'images/logo_cropped.png';
 
-const SIZE = "96px";
+const SIZE = '96px';
 
 export default function Logo() {
   return (
