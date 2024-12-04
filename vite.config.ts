@@ -12,7 +12,7 @@ export default ({mode}: ConfigInput) => {
 
   return defineConfig({
     plugins: [react(), svgr()],
-    // base: '/' + process.env.VITE_BASE_URL,
+    base: '/' + process.env.VITE_BASE_URL,
     server: {
       host: '0.0.0.0',
     },
