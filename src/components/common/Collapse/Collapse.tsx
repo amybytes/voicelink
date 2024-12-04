@@ -7,8 +7,7 @@ interface CollapseProps {
 }
 
 export default function Collapse({show, children}: CollapseProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [init, setInit] = useState<boolean>(false);
+  const [, setInit] = useState<boolean>(false);
 
   const container = useRef<HTMLDivElement | null>(null);
   const maxWidth = (container.current?.scrollWidth ?? 0) + 12;
